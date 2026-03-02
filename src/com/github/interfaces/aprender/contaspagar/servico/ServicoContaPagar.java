@@ -1,16 +1,20 @@
 package com.github.interfaces.aprender.contaspagar.servico;
 
-import com.github.interfaces.aprender.contaspagar.pagamento.Beneficiario;
+
 import com.github.interfaces.aprender.contaspagar.pagamento.DocumentoPagavel;
+import com.github.interfaces.aprender.contaspagar.pagamento.MetodoPagamento;
 
 public class ServicoContaPagar {
 
-    public void pagar(DocumentoPagavel documento) {
-        Beneficiario beneficiario = documento.getBeneficiario();
+    private MetodoPagamento metodoPagamento;
 
-        if (beneficiario.naoPossuiChavePix()) {
-            throw new RuntimeException("Beneficiário não possui chave PIX");
-        }
-        System.out.printf("DEBUG: Efetuando PIX para %s no valor de %.2f com a chave %s%n", beneficiario.getNome(), documento.getValorTotal(), beneficiario.getChavePix());
+    public ServicoContaPagar(MetodoPagamento metodoPagamento) {
+        this.metodoPagamento = metodoPagamento;
+    }
+
+    public void pagar(DocumentoPagavel documento) {
+
+
+        metodoPagamento.pagar(documento);
     }
 }
