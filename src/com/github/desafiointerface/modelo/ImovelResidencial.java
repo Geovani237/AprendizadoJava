@@ -5,6 +5,11 @@ public class ImovelResidencial implements BemSeguravel{
     private double valorMercado;
     private int areaConstruida;
 
+    public ImovelResidencial(double valorMercado, int areaConstruida) {
+        this.valorMercado = valorMercado;
+        this.areaConstruida = areaConstruida;
+    }
+
     @Override
     public double calcularValorPremio() {
         return (getValorMercado() * 0.1) + (getAreaConstruida() * 0.3) ;
