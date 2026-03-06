@@ -12,12 +12,12 @@ public class ImovelResidencial implements BemSeguravel{
 
     @Override
     public double calcularValorPremio() {
-        return (getValorMercado() * 0.1) + (getAreaConstruida() * 0.3) ;
+        return (getValorMercado() * 0.001) + (getAreaConstruida() * 0.3) ;
     }
 
     @Override
     public String descrever() {
-        return "";
+        return String.format("Imóvel residencial com %dm2 de área construída, avaliada em R$%.2f",getAreaConstruida(), getValorMercado());
     }
 
     public double getValorMercado() {
