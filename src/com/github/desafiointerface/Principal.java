@@ -8,7 +8,7 @@ public class Principal {
     public static void main(String[] args) {
         ServicoPropostaSeguro servico = new ServicoPropostaSeguro();
 
-        CarroParticular carro = new CarroParticular("HR-V", 150_000, 2022);
+        CarroParticular carro = new CarroParticular("HR-V", 150_000, 1999);
         ImovelResidencial imovel = new ImovelResidencial(2_300_000, 320);
 
         servico.emitir(carro);

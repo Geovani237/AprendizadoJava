@@ -11,7 +11,7 @@ public class CarroParticular extends VeiculoAutomotor{
     public double calcularValorPremio() {
         if (getAnoFabricacao() < 2000) {
             double acrecimo = getValorMercado() * 0.04;
-            return acrecimo * 0.05;
+            return acrecimo * 1.05;
         }
         return getValorMercado() * 0.04;
     }
