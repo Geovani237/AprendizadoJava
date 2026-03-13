@@ -5,7 +5,7 @@ import com.github.banco.javabank.ContaCorrente;
 
 public class Principal {
     public static void main(String[] args) {
-        PontuacaoDecorator pontuacao = new PontuacaoDecorator(new ContaCorrente());
+        PontuacaoDecorator pontuacao = new PontuacaoDecorator(new ContaCorrente(),8);
         Conta conta1 = new TributacaoDecorator(pontuacao);
         Conta conta2 = new ContaCorrente();
 
