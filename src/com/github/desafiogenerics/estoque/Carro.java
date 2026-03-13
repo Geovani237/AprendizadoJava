@@ -1,6 +1,6 @@
 package com.github.desafiogenerics.estoque;
 
-public class Carro implements Estocavel{
+public class Carro implements Estocavel {
 
     private String modelo;
     private int quantidadeEstoque;
