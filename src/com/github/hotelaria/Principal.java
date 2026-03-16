@@ -15,16 +15,13 @@ public class Principal {
         cadastro.adicionar("Mercure", "Uberlândia/MG", 400);
 
 //        cadastro.adicionar("Mercure", "Uberlandia/MG", 400);
-
-
+//        cadastro.removerPorCidade("Fortim/CE");
+//        cadastro.remover(new Hotel("Vila Selvagem", "Fortim/CE", 0));
+        cadastro.removerTodos();
 
         ArrayList<Hotel> hoteis = cadastro.obterTotos();
 
-        int indice =hoteis.indexOf(new Hotel("Tivoli Ecoresort", "Praia do Forte/BA", 140));
-        System.out.println(indice);
-
-        System.out.println(hoteis.get(indice));
-//        imprimirHoteis(hoteis);
+        imprimirHoteis(hoteis);
     }
 
     private static void imprimirHoteis(ArrayList<Hotel> hoteis){

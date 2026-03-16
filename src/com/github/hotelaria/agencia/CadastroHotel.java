@@ -19,4 +19,34 @@ public class CadastroHotel {
     public ArrayList<Hotel> obterTotos() {
         return hoteis;
     }
+
+    public void removerPorCidade(String cidade) {
+        ArrayList<Hotel> hoteisParaRemocao = new ArrayList<>();
+
+        for (int i = 0; i < hoteis.size(); i++) {
+            Hotel hotel = hoteis.get(i);
+            if (hotel.getCidade().equals(cidade)) {
+                hoteisParaRemocao.add(hotel);
+//                hoteis.remove(i);
+//                i--;
+            }
+        }
+        if (!hoteis.removeAll(hoteisParaRemocao)){
+            throw new HotelNaoEncontradoException("Hotel(eis) não encontrado para remoção");
+        } else {
+            hoteis.removeAll(hoteisParaRemocao);
+        }
+    }
+    public void remover(Hotel hotel) {
+        boolean removido = hoteis.remove(hotel);
+
+        if (!removido) {
+            throw new HotelNaoEncontradoException("Hotel não encontrado para remoção");
+        }
+    }
+
+    public void removerTodos() {
+        hoteis.clear();
+    }
+
 }
