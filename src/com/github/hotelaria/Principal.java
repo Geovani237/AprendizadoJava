@@ -3,9 +3,7 @@ package com.github.hotelaria;
 import com.github.hotelaria.agencia.CadastroHotel;
 import com.github.hotelaria.agencia.Hotel;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.ListIterator;
+import java.util.*;
 
 public class Principal {
     public static void main(String[] args) {
@@ -21,12 +19,15 @@ public class Principal {
 //        cadastro.remover(new Hotel("Vila Selvagem", "Fortim/CE", 0));
 //        cadastro.removerTodos();
 
-        ArrayList<Hotel> hoteis = cadastro.obterTotos();
+//        List<Hotel> hoteis = cadastro.obterTotos();
+//
+//        imprimirHoteis(hoteis);
 
-        imprimirHoteis(hoteis);
+        Hotel[] hoteis = cadastro.obterTodosComoArray();
+        System.out.println(Arrays.toString(hoteis));
     }
 
-    private static void imprimirHoteis(ArrayList<Hotel> hoteis){
+    private static void imprimirHoteis(List<Hotel> hoteis){
         for (Hotel hotel: hoteis) {
             System.out.printf("%s (%s) -> %.2f%n", hotel.getNome(), hotel.getCidade(), hotel.getPrecoDiaria());
         }

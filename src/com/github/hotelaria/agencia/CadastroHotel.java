@@ -2,10 +2,11 @@ package com.github.hotelaria.agencia;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class CadastroHotel {
 
-    private final ArrayList<Hotel> hoteis = new ArrayList<>();
+    private final List<Hotel> hoteis = new ArrayList<>();
 
     public void adicionar(String nome, String cidade, double precoDiaria) {
         Hotel hotel = new Hotel(nome, cidade, precoDiaria);
@@ -17,8 +18,12 @@ public class CadastroHotel {
         hoteis.add(hotel);
     }
 
-    public ArrayList<Hotel> obterTotos() {
+    public List<Hotel> obterTotos() {
         return hoteis;
+    }
+
+    public Hotel[] obterTodosComoArray() {
+     return hoteis.toArray(new Hotel[0]);
     }
 
     public void removerPorCidade(String cidade) {
