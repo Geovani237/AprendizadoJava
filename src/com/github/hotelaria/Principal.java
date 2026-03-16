@@ -4,6 +4,7 @@ import com.github.hotelaria.agencia.CadastroHotel;
 import com.github.hotelaria.agencia.Hotel;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Principal {
     public static void main(String[] args) {
@@ -15,9 +16,9 @@ public class Principal {
         cadastro.adicionar("Mercure", "Uberlândia/MG", 400);
 
 //        cadastro.adicionar("Mercure", "Uberlandia/MG", 400);
-//        cadastro.removerPorCidade("Fortim/CE");
+        cadastro.removerPorCidade("Fortim/CE");
 //        cadastro.remover(new Hotel("Vila Selvagem", "Fortim/CE", 0));
-        cadastro.removerTodos();
+//        cadastro.removerTodos();
 
         ArrayList<Hotel> hoteis = cadastro.obterTotos();
 
@@ -25,9 +26,17 @@ public class Principal {
     }
 
     private static void imprimirHoteis(ArrayList<Hotel> hoteis){
-        for (int i = 0; i < hoteis.size(); i++) {
-            Hotel hotel = hoteis.get(i);
+        Iterator<Hotel> hotelIterator = hoteis.iterator();
+        while (hotelIterator.hasNext()) {
+            Hotel hotel = hotelIterator.next();
             System.out.printf("%s (%s) -> %.2f%n", hotel.getNome(), hotel.getCidade(), hotel.getPrecoDiaria());
+
         }
+
+
+//        for (int i = 0; i < hoteis.size(); i++) {
+//            Hotel hotel = hoteis.get(i);
+//            System.out.printf("%s (%s) -> %.2f%n", hotel.getNome(), hotel.getCidade(), hotel.getPrecoDiaria());
+//        }
     }
 }
