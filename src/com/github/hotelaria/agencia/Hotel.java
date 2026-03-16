@@ -44,6 +44,21 @@ public class Hotel {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Hotel hotel = (Hotel) o;
+        return nome.equals(hotel.nome) && cidade.equals(hotel.cidade);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = nome.hashCode();
+        result = 31 * result + cidade.hashCode();
+        return result;
+    }
+
+    @Override
     public String toString() {
         return "Hotel{" +
                 "nome='" + nome + '\'' +
