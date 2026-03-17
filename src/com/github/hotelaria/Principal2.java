@@ -1,4 +1,6 @@
-package com.github.hotelaria.agencia;
+package com.github.hotelaria;
+
+import com.github.hotelaria.agencia.Hotel;
 
 public class Principal2 {
     public static void main(String[] args) {

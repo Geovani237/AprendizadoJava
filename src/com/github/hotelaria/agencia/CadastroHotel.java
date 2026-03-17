@@ -1,9 +1,6 @@
 package com.github.hotelaria.agencia;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class CadastroHotel {
 
@@ -29,6 +26,12 @@ public class CadastroHotel {
 
     public void ordenar() {
         Collections.sort(hoteis);
+    }
+
+    public void ordenarPorPreco() {
+//        Collections.sort(hoteis, new PrecoHotelComparator());
+        hoteis.sort(new PrecoHotelComparator().reversed()
+                .thenComparing(Comparator.naturalOrder()));
     }
 
     public void removerPorCidade(String cidade) {
