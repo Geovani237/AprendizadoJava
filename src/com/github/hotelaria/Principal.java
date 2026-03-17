@@ -19,12 +19,13 @@ public class Principal {
 //        cadastro.remover(new Hotel("Vila Selvagem", "Fortim/CE", 0));
 //        cadastro.removerTodos();
 
-//        List<Hotel> hoteis = cadastro.obterTotos();
-//
-//        imprimirHoteis(hoteis);
+        cadastro.ordenar();
+        List<Hotel> hoteis = cadastro.obterTotos();
 
-        Hotel[] hoteis = cadastro.obterTodosComoArray();
-        System.out.println(Arrays.toString(hoteis));
+        imprimirHoteis(hoteis);
+
+//        Hotel[] hoteis = cadastro.obterTodosComoArray();
+//        System.out.println(Arrays.toString(hoteis));
     }
 
     private static void imprimirHoteis(List<Hotel> hoteis){

@@ -1,6 +1,7 @@
 package com.github.hotelaria.agencia;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -24,6 +25,10 @@ public class CadastroHotel {
 
     public Hotel[] obterTodosComoArray() {
      return hoteis.toArray(new Hotel[0]);
+    }
+
+    public void ordenar() {
+        Collections.sort(hoteis);
     }
 
     public void removerPorCidade(String cidade) {

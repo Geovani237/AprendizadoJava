@@ -1,8 +1,9 @@
 package com.github.hotelaria.agencia;
 
+import java.util.Comparator;
 import java.util.Objects;
 
-public class Hotel {
+public class Hotel implements Comparable<Hotel>{
 
     private String nome;
     private String cidade;
@@ -48,14 +49,12 @@ public class Hotel {
         if (o == null || getClass() != o.getClass()) return false;
 
         Hotel hotel = (Hotel) o;
-        return nome.equals(hotel.nome) && cidade.equals(hotel.cidade);
+        return Objects.equals(nome, hotel.nome);
     }
 
     @Override
     public int hashCode() {
-        int result = nome.hashCode();
-        result = 31 * result + cidade.hashCode();
-        return result;
+        return Objects.hashCode(nome);
     }
 
     @Override
@@ -67,4 +66,21 @@ public class Hotel {
                 '}';
     }
 
+    @Override
+    public int compareTo(Hotel o) {
+        return getNome().compareTo(o.getNome());
+
+//        return Double.compare(getPrecoDiaria(), o.getPrecoDiaria());
+
+
+//        return Double.valueOf(getPrecoDiaria())
+//                .compareTo(Double.valueOf(o.getPrecoDiaria()));
+
+//        if (this.getPrecoDiaria() < o.getPrecoDiaria()) {
+//            return -1;
+//        } else if (this.getPrecoDiaria() > o.getPrecoDiaria()) {
+//            return 1;
+//        }
+//        return 0;
+    }
 }
