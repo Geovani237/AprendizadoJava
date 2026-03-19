@@ -2,7 +2,7 @@ package com.github.desafiomapas;
 
 import java.util.Objects;
 
-public class Estado {
+public class Estado implements Comparable<Estado>{
 
     private String sigla;
     private String nome;
@@ -28,5 +28,23 @@ public class Estado {
                 "sigla='" + sigla + '\'' +
                 ", nome='" + nome + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Estado estado = (Estado) o;
+        return Objects.equals(sigla, estado.sigla);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(sigla);
+    }
+
+    @Override
+    public int compareTo(Estado o) {
+        return getSigla().compareTo(o.getSigla());
     }
 }

@@ -1,6 +1,6 @@
 package com.github.desafiomapas;
 
-public class Cidade {
+public class Cidade implements Comparable<Cidade>{
 
     private int codigoIbge;
     private String nome;
@@ -43,5 +43,23 @@ public class Cidade {
                 ", nome='" + nome + '\'' +
                 ", totalHabitantes=" + totalHabitantes +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Cidade cidade = (Cidade) o;
+        return codigoIbge == cidade.codigoIbge;
+    }
+
+    @Override
+    public int hashCode() {
+        return codigoIbge;
+    }
+
+    @Override
+    public int compareTo(Cidade o) {
+        return Integer.compare(getCodigoIbge(), o.getCodigoIbge());
     }
 }
