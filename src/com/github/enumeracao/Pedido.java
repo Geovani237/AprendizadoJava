@@ -57,6 +57,7 @@ public class Pedido {
     public void emitir() {
         status = StatusPedido.EMITIDO;
     }
+
     public void cancelar() {
 //        if (getStatus().equals(StatusPedido.RASCUNHO)) esse maneira daria null point exception
         if (getStatus().podeMudarParaCancelado(getValorTotal())) { // essa maneira não
