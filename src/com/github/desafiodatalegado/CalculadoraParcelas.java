@@ -3,9 +3,7 @@ package com.github.desafiodatalegado;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Objects;
+import java.util.*;
 
 public class CalculadoraParcelas {
 
@@ -36,16 +34,12 @@ public class CalculadoraParcelas {
         DateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
         Date dataFormatada = formatador.parse(data);
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(dataFormatada);
+        for (int i = 0; i < parcelas;){
+            Calendar dataParcela = Calendar.getInstance();
+            dataParcela.setTime(dataFormatada);
 
-        int inicioMesParcela = calendar.get(Calendar.MONTH);
-        int diaDaParcela = calendar.get(Calendar.DAY_OF_MONTH);
-
-        calendar.add(Calendar.MONTH, parcelas);
-//
-        for (int i = 0; i < parcelas; i++){
-            System.out.println(calendar.getTime());
+            dataParcela.add(Calendar.MONTH, i);
+            System.out.println(String.format("Parcela #%d - %s", i++,formatador.format(dataParcela.getTime())));
         }
 
     }

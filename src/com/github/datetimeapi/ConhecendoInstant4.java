@@ -1,0 +1,16 @@
+package com.github.datetimeapi;
+
+import java.time.Instant;
+import java.util.Calendar;
+import java.util.Date;
+
+public class ConhecendoInstant4 {
+    public static void main(String[] args) {
+        Calendar calendar = Calendar.getInstance();
+        Instant instante = calendar.toInstant();
+
+        System.out.println(calendar.getTime());
+        System.out.println(instante);
+        //Convertendo Calendar para Instant
+    }
+}
