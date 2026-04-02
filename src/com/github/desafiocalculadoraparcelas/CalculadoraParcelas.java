@@ -1,9 +1,8 @@
-package com.github.DESAFIO;
+package com.github.desafiocalculadoraparcelas;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalAdjuster;
 import java.time.temporal.TemporalAdjusters;
 
 public class CalculadoraParcelas {
@@ -12,22 +11,19 @@ public class CalculadoraParcelas {
         LocalDate data = LocalDate.parse(dataTexto, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         int dataMaxima = data.getDayOfMonth();
 
-        for (int i = 1; i <= parcelas;) {
-            LocalDate novaData = ChronoUnit.MONTHS.addTo(data,1);
+        for (int i = 1; i <= parcelas; i++) {
             LocalDate ultimoDiaLocalDate = data.with(TemporalAdjusters.lastDayOfMonth());
 
-            int diaNovaData = novaData.getDayOfMonth();
+            int diaNovaData = ultimoDiaLocalDate.getDayOfMonth();
 
-            if (dataMaxima <= diaNovaData) {
-                System.out.println("Parcela #" + i + " - " + data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-                data = novaData;
+            if (diaNovaData < dataMaxima) {
+                System.out.println("Parcela #" + i + " - " + ultimoDiaLocalDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
             } else {
-                data = ultimoDiaLocalDate;
+                data = data.withDayOfMonth(dataMaxima);
                 System.out.println("Parcela #" + i + " - " + data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-                data = novaData;
             }
 
-            i++;
+            data = ChronoUnit.MONTHS.addTo(data,1);
         }
     }
 

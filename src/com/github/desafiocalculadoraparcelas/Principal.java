@@ -1,6 +1,5 @@
-package com.github.DESAFIO;
+package com.github.desafiocalculadoraparcelas;
 
-import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public class Principal {
