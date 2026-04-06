@@ -1,8 +1,7 @@
-package com.github.datetimeapi;
+package com.github.datetimeapi.temporalacessor;
 
 import java.time.Instant;
 import java.util.Calendar;
-import java.util.Date;
 
 public class ConhecendoInstant4 {
     public static void main(String[] args) {

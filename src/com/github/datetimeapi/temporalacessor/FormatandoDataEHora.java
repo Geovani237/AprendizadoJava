@@ -1,9 +1,7 @@
-package com.github.datetimeapi;
+package com.github.datetimeapi.temporalacessor;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.Locale;
 
 public class FormatandoDataEHora {
     public static void main(String[] args) {

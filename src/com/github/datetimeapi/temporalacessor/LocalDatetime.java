@@ -1,4 +1,4 @@
-package com.github.datetimeapi;
+package com.github.datetimeapi.temporalacessor;
 
 import java.time.LocalDateTime;
 
