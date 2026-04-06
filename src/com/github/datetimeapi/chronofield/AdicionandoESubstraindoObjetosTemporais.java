@@ -1,7 +1,6 @@
 package com.github.datetimeapi.chronofield;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class AdicionandoESubstraindoObjetosTemporais {
     public static void main(String[] args) {

@@ -3,7 +3,6 @@ package com.github.datetimeapi.month;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
-import java.time.format.TextStyle;
 import java.util.Locale;
 
 public class Principal1 {

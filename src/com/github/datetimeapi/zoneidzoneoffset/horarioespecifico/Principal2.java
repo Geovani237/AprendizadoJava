@@ -1,6 +1,5 @@
 package com.github.datetimeapi.zoneidzoneoffset.horarioespecifico;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 

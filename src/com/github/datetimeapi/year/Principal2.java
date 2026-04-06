@@ -1,8 +1,6 @@
 package com.github.datetimeapi.year;
 
-import java.time.Period;
 import java.time.Year;
-import java.time.temporal.ChronoUnit;
 
 public class Principal2 {
     public static void main(String[] args) {

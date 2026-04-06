@@ -1,6 +1,5 @@
 package com.github.datetimeapi.year;
 
-import java.time.LocalDate;
 import java.time.Year;
 
 public class Principal1 {

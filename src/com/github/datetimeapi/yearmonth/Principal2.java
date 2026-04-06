@@ -1,7 +1,6 @@
 package com.github.datetimeapi.yearmonth;
 
 import java.time.LocalDate;
-import java.time.Period;
 import java.time.YearMonth;
 import java.time.temporal.ChronoUnit;
 

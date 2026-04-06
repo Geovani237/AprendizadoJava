@@ -1,7 +1,6 @@
 package com.github.datetimeapi.yearmonth;
 
 import java.time.LocalDate;
-import java.time.Month;
 import java.time.YearMonth;
 
 public class Principal1 {

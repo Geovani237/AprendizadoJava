@@ -1,7 +1,6 @@
 package com.github.datetimeapi.monthday;
 
 import java.time.LocalDate;
-import java.time.Month;
 import java.time.MonthDay;
 import java.time.Year;
 

@@ -1,8 +1,6 @@
 package com.github.datetimeapi.offsetdatetime;
 
 import java.time.OffsetDateTime;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
 
 public class Principal1 {
     public static void main(String[] args) {
