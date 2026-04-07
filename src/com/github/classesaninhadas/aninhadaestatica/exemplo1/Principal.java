@@ -1,4 +1,4 @@
-package com.github.classesaninhadas.aninhadaestatica;
+package com.github.classesaninhadas.aninhadaestatica.exemplo1;
 
 public class Principal {
     public static void main(String[] args) {

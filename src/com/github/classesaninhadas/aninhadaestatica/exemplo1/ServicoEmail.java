@@ -1,4 +1,4 @@
-package com.github.classesaninhadas.aninhadaestatica;
+package com.github.classesaninhadas.aninhadaestatica.exemplo1;
 
 public class ServicoEmail {
 
@@ -10,6 +10,7 @@ public class ServicoEmail {
         return "\n--\nGeovani-Java";
     }
 
+//    private static class Mensagem {
     public static class Mensagem {
         private final String remetente;
         private final String destinatario;
@@ -36,4 +37,4 @@ public class ServicoEmail {
 
 }
 
-// Uma boa para pensar antes de criar classe aninhada, uma classe aninhada só deve existir para servir a sua classe superior.
+// Uma boa para pensar antes de criar uma classe aninhada, ela deve existir para servir a sua classe superior.
