@@ -1,0 +1,9 @@
+package com.github.classesaninhadas.anonimas;
+
+import java.math.BigDecimal;
+
+public interface Transacao {
+
+    BigDecimal getValorTotal();
+    void reembolsar();
+}
