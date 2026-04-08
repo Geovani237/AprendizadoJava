@@ -1,7 +1,5 @@
 package com.github.desafios.desafioclasseaninhada;
 
-import com.github.desafios.desafioclasseaninhada.vendas.Cliente;
-import com.github.desafios.desafioclasseaninhada.vendas.ItemPedido;
 import com.github.desafios.desafioclasseaninhada.vendas.Pedido;
 
 import java.math.BigDecimal;
@@ -14,11 +12,11 @@ public class Principal {
             new Locale("pt","BR"));
 
     public static void main(String[] args) {
-        Cliente cliente = new Cliente("João");
-        Pedido pedido = new Pedido(cliente);
+        Pedido pedido = new Pedido(new Pedido.Cliente("João"));
 
-        ItemPedido item1 = pedido.adicionarItem("Iphone 14", 3, new BigDecimal("12000"));
-        ItemPedido item2 = pedido.adicionarItem("Apple Watch", 3, new BigDecimal("5900"));
+        Pedido.ItemPed item1 = pedido.adicionarItem("Iphone 14", 3, new BigDecimal("12000"));
+        Pedido.ItemPed item2 = pedido.adicionarItem("Apple Watch", 3, new BigDecimal("5900"));
+
 
         imprimirResumo(pedido);
 
@@ -26,13 +24,13 @@ public class Principal {
 
         item1.setQuantidade(10);
         imprimirResumo(pedido);
-
-        pedido.emitir();
-        item1.setQuantidade(20);
+//
+//        pedido.emitir();
+//        item1.setQuantidade(20);
     }
 
     private static void imprimirResumo(Pedido pedido) {
-        for (ItemPedido item : pedido.getItens()) {
+        for (Pedido.ItemPed item : pedido.getItens()) {
             System.out.printf("%dx %s (%s) = %s%n",
                     item.getQuantidade(), item.getDescricao(),
                     FORMATADOR_MOEDA.format(item.getValorUnitario()),
