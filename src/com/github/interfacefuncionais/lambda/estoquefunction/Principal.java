@@ -1,11 +1,10 @@
-package com.github.interfacefuncionais.estoquefunction;
+package com.github.interfacefuncionais.lambda.estoquefunction;
 
-import com.github.interfacefuncionais.estoquefunction.toque.Produto;
+import com.github.interfacefuncionais.lambda.estoquefunction.toque.Produto;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.function.Function;
 
 public class Principal {
     public static void main(String[] args) {

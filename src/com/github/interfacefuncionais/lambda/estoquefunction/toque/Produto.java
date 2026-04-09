@@ -1,4 +1,4 @@
-package com.github.interfacefuncionais.estoquefunction.toque;
+package com.github.interfacefuncionais.lambda.estoquefunction.toque;
 
 import java.math.BigDecimal;
 import java.util.Objects;

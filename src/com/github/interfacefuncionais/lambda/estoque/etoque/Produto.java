@@ -1,6 +1,6 @@
-package com.github.interfacefuncionais.estoqueconsumer.enhoque;
+package com.github.interfacefuncionais.lambda.estoque.etoque;
+
 import java.math.BigDecimal;
-import java.util.Objects;
 
 public class Produto {
 
@@ -54,12 +54,12 @@ public class Produto {
         if (o == null || getClass() != o.getClass()) return false;
 
         Produto produto = (Produto) o;
-        return Objects.equals(nome, produto.nome);
+        return nome.equals(produto.nome);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(nome);
+        return nome.hashCode();
     }
 
     @Override
@@ -72,4 +72,3 @@ public class Produto {
                 '}';
     }
 }
-

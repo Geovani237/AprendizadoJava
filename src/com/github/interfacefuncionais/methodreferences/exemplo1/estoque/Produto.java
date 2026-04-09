@@ -1,4 +1,4 @@
-package com.github.interfacefuncionais.estoque.etoque;
+package com.github.interfacefuncionais.methodreferences.exemplo1.estoque;
 
 import java.math.BigDecimal;
 
@@ -24,7 +24,6 @@ public class Produto {
         this(nome, preco, quantidade);
         this.status = status;
     }
-
     public String getNome() {
         return nome;
     }
@@ -37,12 +36,12 @@ public class Produto {
         return quantidade;
     }
 
-    public Status getStatus() {
-        return status;
-    }
-
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
+    }
+
+    public Status getStatus() {
+        return status;
     }
 
     public void inativar() {

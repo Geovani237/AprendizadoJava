@@ -1,10 +1,8 @@
-package com.github.interfacefuncionais;
+package com.github.interfacefuncionais.lambda;
 
-import com.github.interfacefuncionais.crm.CadastroCliente;
-import com.github.interfacefuncionais.crm.Cliente;
-import com.github.interfacefuncionais.crm.Filtro;
+import com.github.interfacefuncionais.lambda.crm.CadastroCliente;
+import com.github.interfacefuncionais.lambda.crm.Cliente;
 
-import java.util.Comparator;
 import java.util.List;
 
 public class Principal {

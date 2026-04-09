@@ -1,4 +1,4 @@
-package com.github.interfacefuncionais.crm;
+package com.github.interfacefuncionais.lambda.crm;
 
 
 import java.util.ArrayList;

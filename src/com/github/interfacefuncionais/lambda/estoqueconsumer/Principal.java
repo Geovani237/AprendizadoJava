@@ -1,6 +1,6 @@
-package com.github.interfacefuncionais.estoqueconsumer;
+package com.github.interfacefuncionais.lambda.estoqueconsumer;
 
-import com.github.interfacefuncionais.estoque.etoque.Produto;
+import com.github.interfacefuncionais.lambda.estoque.etoque.Produto;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

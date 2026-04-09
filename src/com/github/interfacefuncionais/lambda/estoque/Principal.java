@@ -1,10 +1,9 @@
-package com.github.interfacefuncionais.estoque;
+package com.github.interfacefuncionais.lambda.estoque;
 
-import com.github.interfacefuncionais.estoque.etoque.Produto;
+import com.github.interfacefuncionais.lambda.estoque.etoque.Produto;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.function.Predicate;
 
 public class Principal {

@@ -1,4 +1,4 @@
-package com.github.interfacefuncionais.principaisinterfacesfuncionais;
+package com.github.interfacefuncionais.lambda.principaisinterfacesfuncionais;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
