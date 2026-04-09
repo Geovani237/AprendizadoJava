@@ -31,6 +31,19 @@ public class Funcionario {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Funcionario that = (Funcionario) o;
+        return salario.equals(that.salario);
+    }
+
+    @Override
+    public int hashCode() {
+        return salario.hashCode();
+    }
+
+    @Override
     public String toString() {
         return "Funcionario{" +
                 "nome='" + nome + '\'' +
