@@ -1,9 +1,6 @@
 package com.github.optional.companhiaaerea.ciaeaerea;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class ServicoDeReserva {
 
@@ -22,16 +19,18 @@ public class ServicoDeReserva {
         }
     }
 
-    public Reserva buscar(String codigo) {
+    public Optional<Reserva> buscar(String codigo) {
         Reserva reservaEncontada = null;
 
         for (Reserva reserva : reservas) {
             if (reserva.getCodigo().equals(codigo)) {
-                reservaEncontada = reserva;
-                break;
+                return Optional.of(reserva);
+//                reservaEncontada = reserva;
+//                break;
             }
         }
 
-        return reservaEncontada;
+//        return Optional.ofNullable(reservaEncontada);
+        return Optional.empty();
     }
 }

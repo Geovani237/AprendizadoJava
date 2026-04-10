@@ -16,8 +16,7 @@ public class Principal {
         servicoDeReserva.adicionar(new Reserva("28B111", voo, "Maria da silva"));
         servicoDeReserva.adicionar(new Reserva("74F877", voo, "Sebastiam"));
 
-        servicoDeBagagem.contratar("28A888",25);
-
+        servicoDeBagagem.contratar("28A8885",5);
         servicoDeReserva.getReservas().forEach(System.out::println);
     }
 }

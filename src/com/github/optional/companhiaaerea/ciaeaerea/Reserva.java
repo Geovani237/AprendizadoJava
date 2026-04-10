@@ -38,7 +38,7 @@ public class Reserva {
         return quantidadeBagagens;
     }
 
-    public void adicionarBagagns(int quantidade) {
+    public void adicionarBagagens(int quantidade) {
         this.quantidadeBagagens += quantidade;
     }
 

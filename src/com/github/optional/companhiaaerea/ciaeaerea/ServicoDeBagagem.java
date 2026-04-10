@@ -1,6 +1,7 @@
 package com.github.optional.companhiaaerea.ciaeaerea;
 
 import java.util.Objects;
+import java.util.Optional;
 
 public class ServicoDeBagagem {
 
@@ -16,11 +17,13 @@ public class ServicoDeBagagem {
             throw new IllegalArgumentException("Quantidade de bagagens inválida");
         }
 
-        Reserva reserva = servicoDeReserva.buscar(codigoReserva);
+        Optional<Reserva> reservaOptional = servicoDeReserva.buscar(codigoReserva);
 
-        if (reserva == null) {
+        if (reservaOptional.isPresent()) {
+            reservaOptional.get().adicionarBagagens(quantidadeBagagens);
+        } else {
             throw new ReservaNaoEncontradaException("Reserva não existe");
         }
-        reserva.adicionarBagagns(quantidadeBagagens);
+
     }
 }
