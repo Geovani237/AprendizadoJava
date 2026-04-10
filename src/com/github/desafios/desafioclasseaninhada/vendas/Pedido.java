@@ -11,7 +11,7 @@ public class Pedido {
     private final Cliente cliente;
     private Status status = Status.RASCUNHO;
     private BigDecimal valorTotal = BigDecimal.ZERO;
-    private final List<ItemPed> itens = new ArrayList<>();
+    private final List<Item> itens = new ArrayList<>();
 
     public Pedido(Cliente cliente) {
         Objects.requireNonNull(cliente);
@@ -26,7 +26,7 @@ public class Pedido {
         return status;
     }
 
-    public List<ItemPed> getItens() {
+    public List<Item> getItens() {
         return Collections.unmodifiableList(itens);
     }
 
@@ -34,8 +34,8 @@ public class Pedido {
         return valorTotal;
     }
 
-    public ItemPed adicionarItem(String descricao, int quantidade, BigDecimal valorUnitario) {
-        ItemPed item = new ItemPed(descricao, quantidade, valorUnitario, this);
+    public Item adicionarItem(String descricao, int quantidade, BigDecimal valorUnitario) {
+        Item item = new Item(descricao, quantidade, valorUnitario, this);
         itens.add(item);
         return item;
     }
@@ -60,34 +60,15 @@ public class Pedido {
         RASCUNHO, EMITIDO, CANCELADO
     }
 
-    public static class Cliente {
 
-        private String nome;
-
-        public Cliente(String nome) {
-            setNome(nome);
-        }
-
-        public String getNome() {
-            return nome;
-        }
-
-        public void setNome(String nome) {
-            Objects.requireNonNull(nome);
-            this.nome = nome;
-        }
-    }
-
-
-
-    public class ItemPed {
+    public class Item {
 
         private Pedido pedido;
         private final String descricao;
         private final BigDecimal valorUnitario;
         private int quantidade;
 
-        ItemPed(String descricao, int quantidade, BigDecimal valorUnitario, Pedido pedido) {
+        Item(String descricao, int quantidade, BigDecimal valorUnitario, Pedido pedido) {
             Objects.requireNonNull(pedido);
             Objects.requireNonNull(descricao);
             Objects.requireNonNull(valorUnitario);

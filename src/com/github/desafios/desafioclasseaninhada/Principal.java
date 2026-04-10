@@ -1,5 +1,6 @@
 package com.github.desafios.desafioclasseaninhada;
 
+import com.github.desafios.desafioclasseaninhada.vendas.Cliente;
 import com.github.desafios.desafioclasseaninhada.vendas.Pedido;
 
 import java.math.BigDecimal;
@@ -12,10 +13,11 @@ public class Principal {
             new Locale("pt","BR"));
 
     public static void main(String[] args) {
-        Pedido pedido = new Pedido(new Pedido.Cliente("João"));
+        Cliente cliente = new Cliente("João");
+        Pedido pedido = new Pedido(cliente);
 
-        Pedido.ItemPed item1 = pedido.adicionarItem("Iphone 14", 3, new BigDecimal("12000"));
-        Pedido.ItemPed item2 = pedido.adicionarItem("Apple Watch", 3, new BigDecimal("5900"));
+        Pedido.Item item1 = pedido.adicionarItem("Iphone 14", 3, new BigDecimal("12000"));
+        Pedido.Item item2 = pedido.adicionarItem("Apple Watch", 3, new BigDecimal("5900"));
 
 
         imprimirResumo(pedido);
@@ -30,7 +32,7 @@ public class Principal {
     }
 
     private static void imprimirResumo(Pedido pedido) {
-        for (Pedido.ItemPed item : pedido.getItens()) {
+        for (Pedido.Item item : pedido.getItens()) {
             System.out.printf("%dx %s (%s) = %s%n",
                     item.getQuantidade(), item.getDescricao(),
                     FORMATADOR_MOEDA.format(item.getValorUnitario()),
