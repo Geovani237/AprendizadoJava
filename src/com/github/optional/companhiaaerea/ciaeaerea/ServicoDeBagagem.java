@@ -17,13 +17,22 @@ public class ServicoDeBagagem {
             throw new IllegalArgumentException("Quantidade de bagagens inválida");
         }
 
-        Optional<Reserva> reservaOptional = servicoDeReserva.buscar(codigoReserva);
+//        Optional<Reserva> reservaOptional = servicoDeReserva.buscar(codigoReserva);
+//
+//        if (reservaOptional.isPresent()) {
+//            reservaOptional.get().adicionarBagagens(quantidadeBagagens);
+//        } else {
+//            throw new ReservaNaoEncontradaException("Reserva não existe");
+//        }
 
-        if (reservaOptional.isPresent()) {
-            reservaOptional.get().adicionarBagagens(quantidadeBagagens);
-        } else {
-            throw new ReservaNaoEncontradaException("Reserva não existe");
-        }
+        // Com method Reference não tem como passar uma mensagem...
+//        servicoDeReserva.buscar(codigoReserva)
+//                .orElseThrow(ReservaNaoEncontradaException::new)
+//                .adicionarBagagens(quantidadeBagagens);
+
+        servicoDeReserva.buscar(codigoReserva)
+                .orElseThrow(() -> new ReservaNaoEncontradaException("Reserva não existe"))
+                .adicionarBagagens(quantidadeBagagens);
 
     }
 }
