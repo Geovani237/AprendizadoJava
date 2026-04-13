@@ -20,8 +20,16 @@ public class Principal2 {
 
 //        Reserva reserva = servicoDeReserva.buscar("28A889")
 //                .orElseGet(() -> new Reserva("000000", voo, "Não informado"));
-        Reserva reserva = servicoDeReserva.buscar("28A888", () -> new Reserva("000000", voo, "Não informado"));
+//        Reserva reserva = servicoDeReserva.buscar("28A888", () -> new Reserva("000000", voo, "Não informado"));
 
-        System.out.println(reserva);
+
+//        servicoDeReserva.buscar("28A8884")
+//                        .ifPresent(reserva -> reserva.adicionarBagagens(10));
+        servicoDeReserva.buscar("28A8884").ifPresentOrElse(
+                reserva -> reserva.adicionarBagagens(10),
+                () -> System.out.println("não encontrado")
+        );
+
+        servicoDeReserva.getReservas().forEach(System.out::println);
     }
 }
