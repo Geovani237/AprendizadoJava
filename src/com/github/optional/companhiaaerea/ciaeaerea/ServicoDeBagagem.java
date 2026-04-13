@@ -30,6 +30,7 @@ public class ServicoDeBagagem {
 //                .orElseThrow(ReservaNaoEncontradaException::new)
 //                .adicionarBagagens(quantidadeBagagens);
 
+        // Com Lambda Tem como
         servicoDeReserva.buscar(codigoReserva)
                 .orElseThrow(() -> new ReservaNaoEncontradaException("Reserva não existe"))
                 .adicionarBagagens(quantidadeBagagens);

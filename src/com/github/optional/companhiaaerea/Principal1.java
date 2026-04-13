@@ -5,7 +5,7 @@ import com.github.optional.companhiaaerea.ciaeaerea.ServicoDeBagagem;
 import com.github.optional.companhiaaerea.ciaeaerea.ServicoDeReserva;
 import com.github.optional.companhiaaerea.ciaeaerea.Voo;
 
-public class Principal {
+public class Principal1 {
     public static void main(String[] args) {
         var servicoDeReserva = new ServicoDeReserva();
         var servicoDeBagagem = new ServicoDeBagagem(servicoDeReserva);
