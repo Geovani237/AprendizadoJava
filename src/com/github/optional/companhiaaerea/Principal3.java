@@ -1,9 +1,6 @@
 package com.github.optional.companhiaaerea;
 
-import com.github.optional.companhiaaerea.ciaeaerea.Reserva;
-import com.github.optional.companhiaaerea.ciaeaerea.ServicoDeBagagem;
-import com.github.optional.companhiaaerea.ciaeaerea.ServicoDeReserva;
-import com.github.optional.companhiaaerea.ciaeaerea.Voo;
+import com.github.optional.companhiaaerea.ciaeaerea.*;
 
 public class Principal3 {
     public static void main(String[] args) {
@@ -17,10 +14,15 @@ public class Principal3 {
 
         servicoDeBagagem.contratar("28A888",5);
 
-        Reserva reserva = servicoDeReserva.buscar("28A888")
+//        Reserva reserva = servicoDeReserva.buscar("28A888")
+//                .filter(r -> r.getQuantidadeBagagens() > 0)
+//                .orElseThrow(RuntimeException::new);
+//        System.out.println(reserva);
+
+        Passageiro passageiro = servicoDeReserva.buscar("28A888")
                 .filter(r -> r.getQuantidadeBagagens() > 0)
+                .map(Reserva::getPassageiro)
                 .orElseThrow(RuntimeException::new);
-        System.out.println(reserva);
 
     }
 }
