@@ -1,5 +1,7 @@
 package com.github.desafios.desafiooptional;
 
+import java.util.Optional;
+
 public class Cliente {
 
     private final String nome;
@@ -18,7 +20,13 @@ public class Cliente {
         return nome;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
+    public Optional<Endereco> getEndereco() {
+//        Optional<Endereco> enderecoOptional = null;
+//        enderecoOptional
+        return Optional.ofNullable(endereco);
     }
+
+//    public Endereco getEndereco() {
+//        return endereco;
+//    }
 }

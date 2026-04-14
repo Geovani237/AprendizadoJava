@@ -1,6 +1,7 @@
 package com.github.desafios.desafiooptional;
 
 import java.util.Objects;
+import java.util.Optional;
 
 public class Principal {
     public static void main(String[] args) {
@@ -24,17 +25,12 @@ public class Principal {
     private static String obterNomeCidadeResidenciaPropria(Cliente cliente) {
         Objects.requireNonNull(cliente);
 
-        Endereco endereco = cliente.getEndereco();
-        Cidade cidade = null;
+        Optional<Endereco> endereco = cliente.getEndereco();
+        Optional<Cidade> cidade = Optional.empty();
 
-        if (endereco != null && endereco.isResidenciaPropria()) {
-            cidade = endereco.getCidade();
-        }
+        cidade = endereco.flatMap(Endereco::getCidade)
+                .filter(c -> endereco.get().isResidenciaPropria());
 
-        if (cidade != null) {
-            return cidade.nome();
-        }
-
-        throw new TipoDeResidenciaInvalidaException();
+       return cidade.orElseThrow(() -> new TipoDeResidenciaInvalidaException("Perdeu")).nome();
     }
 }
