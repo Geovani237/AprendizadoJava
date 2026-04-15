@@ -4,6 +4,7 @@ import com.github.stream.estoque.CadastroProduto;
 import com.github.stream.estoque.Produto;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 public class Principal {
@@ -11,16 +12,16 @@ public class Principal {
         var cadastroProduto = new CadastroProduto();
         List<Produto> produtos = cadastroProduto.obterTodos();
 
-        produtos.stream()
-                .peek(produto -> produto.setNome(produto.getNome().toUpperCase())) // serve para inspecionar, depurar (debugar) ou realizar ações colaterais
-                .peek(p -> System.out.println("Antes do temEstoque: " + p)) // o uso mais comum é para debugar a pipeline
-                .filter(Produto::temEstoque) //operação intermediária
-                .peek(p -> System.out.println("Depois do temEstoque: " + p))
-                .filter(Produto::isInativo) //operação intermediária
-                .forEach(produto -> { //operação terminal
-                    System.out.println("Ativando " + produto);
-                    produto.ativar();
-                });
+        Optional<Produto> produtoOptional = produtos.stream()
+                .peek(System.out::println)
+                .filter(Produto::temEstoque)
+                .filter(Produto::isInativo)
+//                .findFirst(); garante que seja o primeiro objeto encontrado a ser retornado
+                .findAny(); //não tem garantia de qual objeto será retornado
 
+        System.out.println("------");
+        Produto produto = produtoOptional.orElseThrow(
+                () -> new RuntimeException("Produto não encontrado"));
+        System.out.println(produto);
     }
 }
