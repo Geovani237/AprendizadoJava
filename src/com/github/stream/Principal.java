@@ -14,23 +14,10 @@ public class Principal {
         var cadastroProduto = new CadastroProduto();
         List<Produto> produtos = cadastroProduto.obterTodos();
 
-
-//        for (Produto produto : produtos) {
-//            if (produto.temEstoque()) {
-//                Fabricante fabricante = produto.getFabricante();
-//                System.out.println(fabricante);
-//            }
-//        }
-
-//        Stream<Fabricante> stream = produtos.stream()
-//                .filter(Produto::temEstoque)
-//                .map(Produto::getFabricante); // operação intermediária que transforma cada elemento de stream, em um novo elemento de um novo steam
-//
-//        stream.forEach(System.out::println);
-
         produtos.stream()
                 .filter(Produto::temEstoque)
                 .map(Produto::getFabricante)
+                .distinct() //Operação intermediária com estada (stateful) pode precisar processar todos os elementos do Stream, retorna uma stream com elementos únicos, e tem de ter o metodo equals implementado na classe,
                 .forEach(System.out::println);
     }
 }
