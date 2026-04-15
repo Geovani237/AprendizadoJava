@@ -12,16 +12,21 @@ public class Principal {
         var cadastroProduto = new CadastroProduto();
         List<Produto> produtos = cadastroProduto.obterTodos();
 
-        Optional<Produto> produtoOptional = produtos.stream()
-                .peek(System.out::println)
-                .filter(Produto::temEstoque)
-                .filter(Produto::isInativo)
-//                .findFirst(); garante que seja o primeiro objeto encontrado a ser retornado
-                .findAny(); //não tem garantia de qual objeto será retornado
+//        boolean temProdutoNoEstoque = produtos.stream()
+//                .peek(System.out::println)
+//                .anyMatch(Produto::temEstoque); //operação terminal de curto circuito
 
-        System.out.println("------");
-        Produto produto = produtoOptional.orElseThrow(
-                () -> new RuntimeException("Produto não encontrado"));
-        System.out.println(produto);
+
+//        boolean todosProdutoNoEstoque = produtos.stream()
+//                .peek(System.out::println)
+//                .allMatch(Produto::temEstoque);
+//
+//        System.out.println(todosProdutoNoEstoque);
+
+        boolean nenhumProdutoNoEstoque = produtos.stream()
+                .peek(System.out::println)
+                .noneMatch(Produto::temEstoque);
+
+        System.out.println(nenhumProdutoNoEstoque);
     }
 }
