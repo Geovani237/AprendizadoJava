@@ -1,6 +1,7 @@
 package com.github.stream;
 
 import com.github.stream.estoque.CadastroProduto;
+import com.github.stream.estoque.Fabricante;
 import com.github.stream.estoque.Produto;
 
 import java.util.Comparator;
@@ -13,12 +14,23 @@ public class Principal {
         var cadastroProduto = new CadastroProduto();
         List<Produto> produtos = cadastroProduto.obterTodos();
 
-        boolean temProdutoComEstoque = produtos.stream()
-                .peek(System.out::println)
-                .filter(Produto::temEstoque)
-                .sorted(Comparator.comparingInt(Produto::getQuantidade)) // o metodo sorted é uma operação intermediária com estado (stateful)
-                .anyMatch(Produto::temEstoque);
 
-        System.out.println(temProdutoComEstoque);
+//        for (Produto produto : produtos) {
+//            if (produto.temEstoque()) {
+//                Fabricante fabricante = produto.getFabricante();
+//                System.out.println(fabricante);
+//            }
+//        }
+
+//        Stream<Fabricante> stream = produtos.stream()
+//                .filter(Produto::temEstoque)
+//                .map(Produto::getFabricante); // operação intermediária que transforma cada elemento de stream, em um novo elemento de um novo steam
+//
+//        stream.forEach(System.out::println);
+
+        produtos.stream()
+                .filter(Produto::temEstoque)
+                .map(Produto::getFabricante)
+                .forEach(System.out::println);
     }
 }
