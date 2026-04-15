@@ -116,9 +116,6 @@ public class Produto {
                 "nome='" + nome + '\'' +
                 ", preco=" + preco +
                 ", quantidade=" + quantidade +
-                ", status=" + status +
-                ", fabricante=" + fabricante +
-                ", categorias=" + categorias +
-                '}';
+                ", status=" + status + '}';
     }
 }
