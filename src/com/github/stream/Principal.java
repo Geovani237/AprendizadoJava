@@ -12,25 +12,15 @@ public class Principal {
         List<Produto> produtos = cadastroProduto.obterTodos();
 
         produtos.stream()
-//                .filter(produto -> produto.temEstoque() && produto.isInativo())
-                .filter(Produto::temEstoque)//operação intermediária
-                .filter(Produto::isInativo)//operação intermediária
+                .peek(produto -> produto.setNome(produto.getNome().toUpperCase())) // serve para inspecionar, depurar (debugar) ou realizar ações colaterais
+                .peek(p -> System.out.println("Antes do temEstoque: " + p)) // o uso mais comum é para debugar a pipeline
+                .filter(Produto::temEstoque) //operação intermediária
+                .peek(p -> System.out.println("Depois do temEstoque: " + p))
+                .filter(Produto::isInativo) //operação intermediária
                 .forEach(produto -> { //operação terminal
                     System.out.println("Ativando " + produto);
                     produto.ativar();
                 });
 
-//        Stream<Produto> stream = produtos.stream();
-//
-//        Stream<Produto> streamComEstoque = stream
-//                .filter(Produto::temEstoque);
-//
-//        Stream<Produto> streamComEstoqueInativo = streamComEstoque
-//                .filter(Produto::isInativo);
-//
-//        streamComEstoqueInativo.forEach(produto -> {
-//            System.out.println("Ativando " + produto);
-//            produto.ativar();
-//        });
     }
 }
