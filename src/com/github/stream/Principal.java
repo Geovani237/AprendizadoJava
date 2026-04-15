@@ -13,10 +13,12 @@ public class Principal {
         var cadastroProduto = new CadastroProduto();
         List<Produto> produtos = cadastroProduto.obterTodos();
 
-        produtos.stream()
+        boolean temProdutoComEstoque = produtos.stream()
+                .peek(System.out::println)
                 .filter(Produto::temEstoque)
-                .sorted(Comparator.comparingInt(Produto::getQuantidade)) // isso não está alterando a ordem da fonte de dados, apenas está alterando a ordem do Stream
-                .forEach(produto -> System.out.printf("%s = %d unidades%n"
-                        ,produto.getNome(), produto.getQuantidade()));
+                .sorted(Comparator.comparingInt(Produto::getQuantidade)) // o metodo sorted é uma operação intermediária com estado (stateful)
+                .anyMatch(Produto::temEstoque);
+
+        System.out.println(temProdutoComEstoque);
     }
 }
