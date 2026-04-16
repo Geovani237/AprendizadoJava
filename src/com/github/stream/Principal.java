@@ -9,6 +9,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Principal {
@@ -16,14 +17,10 @@ public class Principal {
         var cadastroProduto = new CadastroProduto();
         List<Produto> produtos = cadastroProduto.obterTodos();
 
-        produtos.stream()
+        IntStream stream = produtos.stream()
                 .filter(Produto::temEstoque)
-                .flatMap(produto -> produto.getCategorias().stream())
-                .distinct()
-                .forEach(System.out::println);
+                .mapToInt(Produto::getQuantidade);
 
-//        stream.forEach(obj -> {
-//            System.out.println(obj.getClass().getName() + " - " + obj);
-//        });
+        stream.forEach(num -> System.out.println(num * 2));
     }
 }
