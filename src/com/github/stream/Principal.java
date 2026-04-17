@@ -19,12 +19,16 @@ public class Principal {
         var cadastroProduto = new CadastroProduto();
         List<Produto> produtos = cadastroProduto.obterTodos();
 
-        Map<String, Integer> estoque = produtos.stream()
+        Map<Fabricante, List<Produto>> produtosPorFabricante = produtos.stream()
                 .filter(Produto::temEstoque)
-                .collect(Collectors.toMap(Produto::getNome,
-                        Produto::getQuantidade));
+                .collect(Collectors.groupingBy(Produto::getFabricante));
 
-        System.out.println(estoque);
+        produtosPorFabricante.forEach((fabricante, produtosDoFabricante) -> {
+            System.out.println();
+            System.out.println(fabricante.nome());
+            System.out.println("--------------");
+            produtosDoFabricante.forEach(produto -> System.out.println(produto.getNome())) ;
+        });
     }
 
 
