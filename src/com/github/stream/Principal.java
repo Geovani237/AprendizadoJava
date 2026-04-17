@@ -17,23 +17,21 @@ public class Principal {
         var cadastroProduto = new CadastroProduto();
         List<Produto> produtos = cadastroProduto.obterTodos();
 
+        List<Categoria> categorias = produtos.stream()
+                .filter(Produto::temEstoque)
+                .flatMap(produto -> produto.getCategorias().stream())
+                .distinct()
+                .collect(ArrayList::new,
+                        ArrayList::add,
+                        ArrayList::addAll);
+//                .collect(() -> new ArrayList<>(),
+//                        (lista, elemento) -> lista.add(elemento),
+//                        (lista1, lista2) -> lista1.addAll(lista2));
 
-//        int menorQuantidadeEstoque = produtos.stream()
-//                .filter(Produto::temEstoque)
-//                .mapToInt(Produto::getQuantidade)
-//                .min()
-//                .orElseThrow(() -> new RuntimeException("Menos quantidade não encontrada"));
-//
-//        System.out.println(menorQuantidadeEstoque);
 
 
-            Produto produtoMaisBarato = produtos.stream()
-                    .filter(Produto::temEstoque)
-                    .min(Comparator.comparing(Produto::getPreco))
-                    .orElseThrow(() -> new RuntimeException("Produto mais barato não encontrado!"));
 
-        System.out.println(produtoMaisBarato);
-
+        System.out.println(categorias);
     }
 
 
