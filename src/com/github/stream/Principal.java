@@ -17,25 +17,23 @@ public class Principal {
         var cadastroProduto = new CadastroProduto();
         List<Produto> produtos = cadastroProduto.obterTodos();
 
-//        int totalEstoque = produtos.stream()
+
+//        int menorQuantidadeEstoque = produtos.stream()
+//                .filter(Produto::temEstoque)
 //                .mapToInt(Produto::getQuantidade)
-//                .sum();
-////                .reduce(0, Integer::sum);
+//                .min()
+//                .orElseThrow(() -> new RuntimeException("Menos quantidade não encontrada"));
 //
-//        System.out.println(totalEstoque);
+//        System.out.println(menorQuantidadeEstoque);
 
-//        double mediaEstoque = produtos.stream()
-//                .mapToInt(Produto::getQuantidade)
-//                .average()
-//                .orElseThrow(() -> new RuntimeException("Não há produtos para calcular a média"));
-//
-//        System.out.println(mediaEstoque);
 
-        long totalProdutosComEstoque = produtos.stream()
-                .filter(Produto::temEstoque)
-                .count();
+            Produto produtoMaisBarato = produtos.stream()
+                    .filter(Produto::temEstoque)
+                    .min(Comparator.comparing(Produto::getPreco))
+                    .orElseThrow(() -> new RuntimeException("Produto mais barato não encontrado!"));
 
-        System.out.println(totalProdutosComEstoque);
+        System.out.println(produtoMaisBarato);
+
     }
 
 
