@@ -9,6 +9,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.IntBinaryOperator;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -17,10 +18,27 @@ public class Principal {
         var cadastroProduto = new CadastroProduto();
         List<Produto> produtos = cadastroProduto.obterTodos();
 
-        IntStream stream = produtos.stream()
-                .filter(Produto::temEstoque)
-                .mapToInt(Produto::getQuantidade);
+//        IntBinaryOperator operacaoSoma = (subtotal, valor) -> {
+//            System.out.println(subtotal + " + " + valor);
+//            return subtotal + valor;
+//        };
 
-        stream.forEach(num -> System.out.println(num * 2));
+//        IntBinaryOperator operacaoSoma = (subtotal, valor) -> subtotal + valor;
+
+//        int totalEstoque = produtos.stream()
+//                .mapToInt(Produto::getQuantidade)
+//                .reduce(0, (subtotal, valor) -> subtotal + valor);
+
+//        int totalEstoque = produtos.stream()
+//                .mapToInt(Produto::getQuantidade)
+//                .reduce(0, Integer::sum);
+//
+//        System.out.println(totalEstoque);
+
+        int maximoEstoque = produtos.stream()
+                .mapToInt(Produto::getQuantidade)
+                .reduce(0, Integer::max);
+
+        System.out.println(maximoEstoque);
     }
 }
