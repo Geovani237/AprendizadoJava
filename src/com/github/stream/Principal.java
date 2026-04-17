@@ -19,14 +19,12 @@ public class Principal {
         var cadastroProduto = new CadastroProduto();
         List<Produto> produtos = cadastroProduto.obterTodos();
 
-        List<Categoria> categorias = produtos.stream()
+        Map<String, Integer> estoque = produtos.stream()
                 .filter(Produto::temEstoque)
-                .flatMap(produto -> produto.getCategorias().stream())
-                .distinct()
-                .toList();
-//                .collect(Collectors.toUnmodifiableList());
+                .collect(Collectors.toMap(Produto::getNome,
+                        Produto::getQuantidade));
 
-        System.out.println(categorias);
+        System.out.println(estoque);
     }
 
 
