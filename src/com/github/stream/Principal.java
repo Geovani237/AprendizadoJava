@@ -4,7 +4,9 @@ import com.github.stream.estoque.CadastroProduto;
 import com.github.stream.estoque.Categoria;
 import com.github.stream.estoque.Fabricante;
 import com.github.stream.estoque.Produto;
+import org.w3c.dom.ls.LSOutput;
 
+import java.math.BigDecimal;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
@@ -18,27 +20,23 @@ public class Principal {
         var cadastroProduto = new CadastroProduto();
         List<Produto> produtos = cadastroProduto.obterTodos();
 
-//        IntBinaryOperator operacaoSoma = (subtotal, valor) -> {
-//            System.out.println(subtotal + " + " + valor);
-//            return subtotal + valor;
-//        };
-
-//        IntBinaryOperator operacaoSoma = (subtotal, valor) -> subtotal + valor;
-
-//        int totalEstoque = produtos.stream()
-//                .mapToInt(Produto::getQuantidade)
-//                .reduce(0, (subtotal, valor) -> subtotal + valor);
-
-//        int totalEstoque = produtos.stream()
-//                .mapToInt(Produto::getQuantidade)
-//                .reduce(0, Integer::sum);
+//        BigDecimal valorEmEstoque = produtos.stream()
+//                .map(produto -> produto.getPreco()
+//                        .multiply(new BigDecimal(produto.getQuantidade())))
+//                .reduce(BigDecimal.ZERO, BigDecimal::add);
 //
-//        System.out.println(totalEstoque);
+//        System.out.println(valorEmEstoque);
 
-        int maximoEstoque = produtos.stream()
-                .mapToInt(Produto::getQuantidade)
-                .reduce(0, Integer::max);
+        BigDecimal valorEmEstoque = produtos.stream()
+                .reduce(BigDecimal.ZERO, (subtotal, produto) -> {
+                    BigDecimal valorEstoqueProduto = produto.getPreco()
+                            .multiply(new BigDecimal(produto.getQuantidade()));
+                    return subtotal.add(valorEstoqueProduto);
+                }, BigDecimal::add);
 
-        System.out.println(maximoEstoque);
+        System.out.println(valorEmEstoque);
+
     }
+
+
 }
