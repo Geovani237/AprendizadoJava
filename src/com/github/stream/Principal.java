@@ -23,9 +23,8 @@ public class Principal {
                 .filter(Produto::temEstoque)
                 .flatMap(produto -> produto.getCategorias().stream())
                 .distinct()
-                .collect(Collectors.toCollection(ArrayList::new)); // garante a caracteristica da lista retornada
-                //.collect(Collectors.toList()); // NÃO existe garantia das caracteristicas da lista retornada
-//                .collect(ArrayList::new, ArrayList::add, ArrayList::addAll); // garante a caracteristica da lista retornada
+                .toList();
+//                .collect(Collectors.toUnmodifiableList());
 
         System.out.println(categorias);
     }
