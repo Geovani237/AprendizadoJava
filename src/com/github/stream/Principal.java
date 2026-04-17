@@ -9,6 +9,8 @@ import org.w3c.dom.ls.LSOutput;
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.function.IntBinaryOperator;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -21,15 +23,9 @@ public class Principal {
                 .filter(Produto::temEstoque)
                 .flatMap(produto -> produto.getCategorias().stream())
                 .distinct()
-                .collect(ArrayList::new,
-                        ArrayList::add,
-                        ArrayList::addAll);
-//                .collect(() -> new ArrayList<>(),
-//                        (lista, elemento) -> lista.add(elemento),
-//                        (lista1, lista2) -> lista1.addAll(lista2));
-
-
-
+                .collect(Collectors.toCollection(ArrayList::new)); // garante a caracteristica da lista retornada
+                //.collect(Collectors.toList()); // NÃO existe garantia das caracteristicas da lista retornada
+//                .collect(ArrayList::new, ArrayList::add, ArrayList::addAll); // garante a caracteristica da lista retornada
 
         System.out.println(categorias);
     }
