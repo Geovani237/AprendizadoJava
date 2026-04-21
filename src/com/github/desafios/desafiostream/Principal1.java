@@ -1,0 +1,19 @@
+package com.github.desafios.desafiostream;
+
+import com.github.desafios.desafiostream.comercial.ServicoDeVenda;
+import com.github.desafios.desafiostream.comercial.Venda;
+
+import java.util.List;
+
+public class Principal1 {
+    public static void main(String[] args) {
+        var servicoDeVenda = new ServicoDeVenda();
+        List<Venda> vendas = servicoDeVenda.obterTodas();
+
+        for (Venda venda : vendas) {
+            if (venda.isFechada()) {
+                System.out.println(venda);
+            }
+        }
+    }
+}
