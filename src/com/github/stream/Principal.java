@@ -19,16 +19,26 @@ public class Principal {
         var cadastroProduto = new CadastroProduto();
         List<Produto> produtos = cadastroProduto.obterTodos();
 
-        Map<Boolean, List<Produto>> estoqueProdutos = produtos.stream()
-                .collect(Collectors.partitioningBy(Produto::temEstoque));
+//        List<Fabricante> fabricantes = new ArrayList<>();
 
-        estoqueProdutos.forEach((chave, valor) -> {
-            System.out.println();
-            System.out.println(chave);
-            System.out.println("--------");
-            valor.forEach(System.out::println);
-        });
+
+//        produtos.stream()
+//                .filter(Produto::temEstoque)
+//                .forEach(produto -> {
+//                    if (!fabricantes.contains(produto.getFabricante())) {
+//                        fabricantes.add(produto.getFabricante());
+//                    }
+//                });
+//        System.out.println(fabricantes);
+//    }
+
+        // Usando o paradigma de programação funcional correto
+        List<Fabricante> fabricantes = produtos.stream()
+                .filter(Produto::temEstoque)
+                .map(Produto::getFabricante)
+                .distinct()
+                .toList();
+
+        System.out.println(fabricantes);
     }
-
-
 }
