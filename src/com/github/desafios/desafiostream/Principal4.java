@@ -20,6 +20,15 @@ public class Principal4 {
         }
 
         System.out.println(totalVendas);
+
+        System.out.println("---------------");
+
+
+        BigDecimal total = vendas.stream()
+                .filter(Venda::isFechada)
+                .map(Venda::getValorTotal)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+        System.out.println(total);
     }
 
 }

@@ -1,33 +1,44 @@
 package com.github.desafios.desafiostream;
 
+import com.github.desafios.desafiostream.comercial.Cliente;
 import com.github.desafios.desafiostream.comercial.ServicoDeVenda;
 import com.github.desafios.desafiostream.comercial.Venda;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Principal7 {
 
     public static void main(String[] args) {
         var servicoDeVenda = new ServicoDeVenda();
         List<Venda> vendas = servicoDeVenda.obterTodas();
+//
+//        Map<String, Long> vendasRealizadasPorCliente = new HashMap<>();
+//
+//        for (Venda venda : vendas) {
+//            if (venda.isFechada()) {
+//                String nomeCliente = venda.getCliente().nome();
+//                Long quantidadeVendas = vendasRealizadasPorCliente.get(nomeCliente);
+//                if (quantidadeVendas == null) {
+//                    quantidadeVendas = 0L;
+//                }
+//
+//                vendasRealizadasPorCliente.put(nomeCliente, quantidadeVendas + 1);
+//            }
+//        }
+//
+//        System.out.println(vendasRealizadasPorCliente);
+//
+//        System.out.println("--------------");
 
-        Map<String, Long> vendasRealizadasPorCliente = new HashMap<>();
+        Map<String, Long> vendasRealizadasPorClientes = vendas.stream()
+                .filter(Venda::isFechada)
+                .map(Venda::getCliente)
+                .collect(Collectors.groupingBy(Cliente::nome, Collectors.counting()));
 
-        for (Venda venda : vendas) {
-            if (venda.isFechada()) {
-                String nomeCliente = venda.getCliente().nome();
-                Long quantidadeVendas = vendasRealizadasPorCliente.get(nomeCliente);
-                if (quantidadeVendas == null) {
-                    quantidadeVendas = 0L;
-                }
-
-                vendasRealizadasPorCliente.put(nomeCliente, quantidadeVendas + 1);
-            }
-        }
-
-        System.out.println(vendasRealizadasPorCliente);
+        System.out.println(vendasRealizadasPorClientes);
     }
 
 }
