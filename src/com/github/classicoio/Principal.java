@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class Principal {
     public static void main(String[] args) throws IOException {
-        File arquivo1 = new File("/home/c51442790822/ProjectsGit/AprendizadoJava/docs/contrato.txt");//Caminho absoluto
+        File arquivo1 = new File("/home/geovani/ProjectsGit/AprendizadoJava/docs/contrato.txt");//Caminho absoluto
         System.out.println(arquivo1);
         System.out.println();
         File arquivo2 = new File("docs/contrato.txt");//Caminho relativo
