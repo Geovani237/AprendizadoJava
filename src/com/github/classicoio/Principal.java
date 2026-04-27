@@ -13,7 +13,7 @@ public class Principal {
         System.out.println(arquivo2.getAbsoluteFile());
 
         System.out.println();
-        File arquivo3 = new File("../docs/contrato.txt");
+        File arquivo3 = new File("doc/contrato.txt");
         System.out.println(arquivo3);
         System.out.println(arquivo3.getAbsoluteFile());
         System.out.println();
