@@ -4,47 +4,44 @@ import java.io.*;
 import java.util.Objects;
 
 public class FragmentadorDeArquivo {
-    private final File nomeDaPasta;
-    private final int tamanho;
+    private final File arquivo;
+    private final int tamanhoFragmento;
 
-    public FragmentadorDeArquivo(File nomeDaPasta, int tamanho) {
-        Objects.requireNonNull(nomeDaPasta);
-        this.nomeDaPasta = nomeDaPasta;
-        this.tamanho = tamanho;
-    }
-
-    public File getNomeDaPasta() {
-        return nomeDaPasta;
-    }
-
-    public int getTamanho() {
-        return tamanho;
-    }
-
-    public void fragmentar()  throws IOException {
-        int numero = 1;
-
-        String nomeOriginal = getNomeDaPasta().getName();
-        int posicaoDoPonto = nomeOriginal.lastIndexOf(".");
-        String nomeSemExtensao = nomeOriginal.substring(0, posicaoDoPonto);
-        String extensao = nomeOriginal.substring(posicaoDoPonto);
-
-        try (InputStream inputStream = new FileInputStream(getNomeDaPasta())) {
-            byte[] counteudo = new byte[getTamanho()];
-            int quantidadeBytes;
-
-            while ((quantidadeBytes = inputStream.read(counteudo)) > 0) {
-
-                String caminhoCompleto = getNomeDaPasta().getParent() + "/" + nomeSemExtensao + numero + extensao;
-
-                try (OutputStream outputStream = new FileOutputStream(caminhoCompleto)){
-                    outputStream.write(counteudo, 0, quantidadeBytes);
-                    numero++;
-                }
-            }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+    public FragmentadorDeArquivo(File arquivo, int tamanhoFragmento) {
+        Objects.requireNonNull(arquivo);
+        if (tamanhoFragmento < 1) {
+            throw new IllegalArgumentException("Tamanho do fragmento deve ser a partir de 1 byte");
         }
 
+        this.arquivo = arquivo;
+        this.tamanhoFragmento = tamanhoFragmento;
     }
+
+    public void fragmentar() throws IOException {
+        try (InputStream inputStream = new FileInputStream(arquivo)) {
+            int numeroFragmento = 1;
+            byte[] conteudoFragmento = new byte[tamanhoFragmento];
+            int quantidadeBytesLidos;
+
+            while ((quantidadeBytesLidos = lerFragmento(inputStream, conteudoFragmento)) > 0) {
+                File arquivoFragmento = criarArquivoFragmento(numeroFragmento++);
+                escreverFragmento(arquivoFragmento, conteudoFragmento, quantidadeBytesLidos);
+            }
+        }
+    }
+
+    private int lerFragmento(InputStream inputStream, byte[] conteudo) throws IOException {
+        return inputStream.read(conteudo);
+    }
+
+    private File criarArquivoFragmento(int numeroFragmento) {
+        return new File(arquivo.getAbsolutePath() + "." + numeroFragmento);
+    }
+
+    private void escreverFragmento(File arquivoFragmento, byte[] conteudo, int quantidadeBytes) throws IOException {
+        try (OutputStream outputStream = new FileOutputStream(arquivoFragmento)) {
+            outputStream.write(conteudo, 0, quantidadeBytes);
+        }
+    }
+
 }
