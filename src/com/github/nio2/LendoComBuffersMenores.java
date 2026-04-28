@@ -18,12 +18,14 @@ public class LendoComBuffersMenores {
 
         try (ByteChannel channel = Files.newByteChannel(path, StandardOpenOption.READ)) {
             while (channel.read(buffer) > 0) {
-                buffer.flip();
+                buffer.flip(); //volta a posição para 0
 
                 CharBuffer charBuffer = StandardCharsets.UTF_8.decode(buffer);
                 System.out.print(charBuffer);
 
-                buffer.clear();
+                buffer.clear(); //alem de voltar a posição para 0 define o limite do buffer para a capacidade inicial
+
+                //não é correto ler um buffer de Bytes e depois converter para um buffer de caracteres sem levar em conta que algums caracteres não são representados por um unico byte, mas sim por mais.
             }
         }
     }
