@@ -1,5 +1,6 @@
 package com.github.serializacao;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -7,6 +8,10 @@ import java.util.Objects;
 
 public class Funcionario implements Serializable {
 
+    @Serial
+    private static final long serialVersionUID = 2;
+
+    private Integer codigo;
     private String nome;
     private LocalDate dataNascimento;
     private transient BigDecimal salario;//transiente faz com que ignore a propriedade com a adição dele, é útil quando se tem alguma informação sensível que não pode ser transmitida, ou o valor pode ser obtido por um calculo depois
@@ -15,6 +20,14 @@ public class Funcionario implements Serializable {
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.salario = salario;
+    }
+
+    public void testar() {
+
+    }
+
+    public Integer getCodigo() {
+        return codigo;
     }
 
     public String getNome() {
@@ -57,7 +70,8 @@ public class Funcionario implements Serializable {
     @Override
     public String toString() {
         return "Funcionario{" +
-                "nome='" + nome + '\'' +
+                "codigo=" + codigo +
+                ", nome='" + nome + '\'' +
                 ", dataNascimento=" + dataNascimento +
                 ", salario=" + salario +
                 '}';
