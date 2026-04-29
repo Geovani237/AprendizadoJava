@@ -1,4 +1,4 @@
-package com.github.serializacao.serializar;
+package com.github.serializacao;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

@@ -1,7 +1,5 @@
-package com.github.serializacao.serializar;
+package com.github.serializacao;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.math.BigDecimal;
@@ -11,7 +9,7 @@ import java.nio.file.StandardOpenOption;
 import java.time.LocalDate;
 import java.time.Month;
 
-public class Principal {
+public class Serializar {
 
     public static void main(String[] args) {
         Funcionario funcionario = new Funcionario("João",
