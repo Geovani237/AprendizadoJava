@@ -9,7 +9,7 @@ public class Funcionario implements Serializable {
 
     private String nome;
     private LocalDate dataNascimento;
-    private BigDecimal salario;
+    private transient BigDecimal salario;//transiente faz com que ignore a propriedade com a adição dele, é útil quando se tem alguma informação sensível que não pode ser transmitida, ou o valor pode ser obtido por um calculo depois
 
     public Funcionario(String nome, LocalDate dataNascimento, BigDecimal salario) {
         this.nome = nome;
