@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="transformando-em-jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/transformando-em-jar.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
