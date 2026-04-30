@@ -1,10 +1,18 @@
 package com.github.desafios.desafioserializacao.crm;
 
-public class Endereco {
+import java.io.Serial;
+import java.io.Serializable;
+
+public class Endereco implements Serializable {
+
+
+    @Serial
+    private static final long serialVersionUID = -5068242887714677550L;
 
     private String rua;
     private String numero;
     private String bairro;
+    private String cep;
 
     public Endereco(String rua, String numero, String bairro) {
         this.rua = rua;
@@ -42,6 +50,7 @@ public class Endereco {
                 "rua='" + rua + '\'' +
                 ", numero='" + numero + '\'' +
                 ", bairro='" + bairro + '\'' +
+                ", cep='" + cep + '\'' +
                 '}';
     }
 }

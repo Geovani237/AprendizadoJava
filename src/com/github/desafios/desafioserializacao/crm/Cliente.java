@@ -1,8 +1,14 @@
 package com.github.desafios.desafioserializacao.crm;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class Cliente {
+public class Cliente implements Serializable {
+
+
+    @Serial
+    private static final long serialVersionUID = 3674903914662863777L;
 
     private String nome;
     private final Endereco endereco;
